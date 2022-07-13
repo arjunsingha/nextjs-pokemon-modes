@@ -3,21 +3,21 @@ import Head from 'next/head';
 import Link from "next/link";
  import styles from '../../styles/Details.module.css'
 
-export async function getStaticPaths() {
-    const resp = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json");
+// export async function getStaticPaths() {
+//     const resp = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json");
 
-    const pokemon = await resp.json();
+//     const pokemon = await resp.json();
 
-    return {
-        paths: pokemon.map((pokemon)=>({
-            params:{id: pokemon.id.toString()}
-        })),
-        fallback: false,
-    }
-}
+//     return {
+//         paths: pokemon.map((pokemon)=>({
+//             params:{id: pokemon.id.toString()}
+//         })),
+//         fallback: false,
+//     }
+// }
 
-//  export async function getServerSideProps({params}){
-export async function getStaticProps({params}){
+ export async function getServerSideProps({params}){
+// export async function getStaticProps({params}){
     const resp = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`);
     
     return {
